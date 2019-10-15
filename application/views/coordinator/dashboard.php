@@ -87,7 +87,7 @@
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">MENU UTAMA</li>
+            <li class="header">MAIN NAVIGATION</li>
             <li class="treeview active">
               <a href="<?php echo base_url(); ?>index.php/coor-dashboard">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>

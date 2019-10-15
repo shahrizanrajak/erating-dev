@@ -17,10 +17,10 @@
           "ordering": true,
           "info": true,          
           "processing": true,
-          "sAjaxDataProp":"",
+          "sDataProp":"",
           "serverSide": false,
-          // "ajaxSource": "json-data",
-          "ajax": jsonData,
+          // "Source": "json-data",
+          "": jsonData,
           "autoWidth": true,
           "columns": [              
               { "data": "code_branch" },
@@ -86,9 +86,9 @@
           "ordering": true,
           "info": true,          
           "processing": false,
-          "sAjaxDataProp":"",
+          "sDataProp":"",
           "serverSide": false,          
-          // "ajax": jsonData,
+          // "": jsonData,
           "autoWidth": true,
           "columnDefs": [
                 { "type": "date_update", "targets": -1 },
@@ -100,7 +100,7 @@
           "dom": 'lBfrtip',  // lBrtip // ref > https://datatables.net/examples/basic_init/dom.html
           "buttons": [
                 {
-                    text: 'Tambah',                    
+                    text: 'Tambah nasi',                    
                     action: function ( e, dt, node, config ) {
                         // alert( 'Button activated' ); 
                         $('#frmUserInfo')[0].reset(); 
@@ -124,11 +124,10 @@
           ]
         });      
 
-     
         // this function will reload data tabla automatically every 30 sec
-        // reference: https://datatables.net/reference/api/ajax.reload()
+        // reference: https://datatables.net/reference/api/.reload()
         setInterval( function () {
-            tblList.ajax.reload();
+            tblList..reload();
         }, 30000 );  
 
         // Open dilog modal for New record
@@ -181,7 +180,7 @@
           console.log(UserMinistryValue);
 
           // List User(s) if Ministry was selected
-          $.ajax({
+          $.({
               type: "GET",
               datatype: "jsonp",                            
               url: domain+"index.php/department-by-ministry/"+UserMinistryValue,
@@ -212,7 +211,7 @@
           console.log(UserDepartmentValue);
 
           // List User(s) if Department was selected
-          $.ajax({
+          $.({
               type: "GET",
               datatype: "jsonp",                            
               url: domain+"index.php/branch-by-department/"+UserDepartmentValue,
@@ -287,7 +286,7 @@
           $(".modal-header #label-rekod").text('#' + setAgencyId);          
 
           // get details asnaf record from server        
-          $.ajax({
+          $.({
               type: "GET",
               datatype: "jsonp",                            
               url: domain+"index.php/erating-details/"+setAgencyId,
@@ -349,7 +348,7 @@
 
           console.log(jsonData);
 
-          $.ajax({
+          $.({
               type: "POST",                
               url: domain+"index.php/erating-save-agency",                                               
               data: {data: jsonData},              
@@ -361,7 +360,7 @@
                   $('.modal-body #erating-tabQuestion').show();
                   $('.modal-body #erating-tabUser').show();                  
 
-                  tblList.ajax.reload();
+                  tblList..reload();
                   alert('Successfully saved...');
               },
               error: function () {                     
@@ -382,12 +381,12 @@
 
           console.log(jsonData);
 
-          $.ajax({
+          $.({
               type: "POST",                
               url: domain+"index.php/erating-update-agency",                                               
               data: {data: jsonData},              
               success: function(data) {
-                  tblList.ajax.reload();
+                  tblList..reload();
                   alert('Successfully saved...');
               },
               error: function () {                     
@@ -407,7 +406,7 @@
 
           console.log(jsonData);
 
-          $.ajax({
+          $.({
               type: "POST",                
               url: domain+"index.php/erating-save-config",                                               
               data: {data: jsonData},              
@@ -418,7 +417,7 @@
                   $('.modal-body #erating-tabQuestion').show();
                   $('.modal-body #erating-tabUser').show();                  
 
-                  tblList.ajax.reload();
+                  tblList..reload();
                   alert('Successfully saved...');
               },
               error: function () {                     
@@ -427,32 +426,7 @@
           });
         }); 
 
-
-        // button Qrcode
-
-
-
-        $('#btnGenerateQrcode').click(function() {   
-          //alert('yes');
-          var uId = $('#userId').val();  
-
-         //window.open( base_url() . 'index.php/qrcode/'+uId, '_blank');
-          url = "<img src='/index.php/qrcode/"+uId+"' width='100px'>"; 
-          // url2 = "/index.php/dashboard"; 
-          $('.modal-body #qr_image_preview').html(url);
-          // $('.modal-body #qr_image_preview').load(url2); //test functionn load
-         });
-
-        // button Cetak
-
-        $('#btnCetak').click(function() {  
-
-            var uId = $('#userId').val();        
-            window.open("/index.php/qrcodepdf/" + uId); 
-     
-        });
-
-        
+        // Save User
         $('#btnSaveUser').click(function() {   
           // var token = $('#csrf_erating_token').val();
           var uId = $('#userId').val();   
@@ -477,10 +451,11 @@
           } else {
             jsonData = '{"id_pengguna":"'+ uId +'","kad_pengenalan":"'+ setIc +'","kata_laluan":"'+ setPwd +'","nama":"'+ setName +'","jawatan":"'+ setPost +'","emel":"'+ setEmail +'","no_telefon":"'+ setPhone +'","tahap":"'+ setAccess +'","status":"'+ setStatus +'","agensi_id":"'+ setAgencyId +'"}';
             jsonCall = domain+"index.php/user-update";
-            actions = '<a href="#" class="user_preview" id="'+ uId+'">Lihated</a> / <a href="" class="user_remove" id="'+ uId+'">Padam</a>';
+            // actions = '<a href="#" class="user_preview" id="'+ uId+'">Lihat</a> / <a href="" class="user_remove" id="'+ uId+'">Padam</a>';
+			actions = '<a href="#" class="user_preview" id="'+ uId+'">Lihat</a> / Padam';
           }
 
-          $.ajax({    
+          $.({    
               type: "POST",                
               url: jsonCall,
               data: {data: jsonData},              
@@ -496,10 +471,8 @@
                   alert('Unable to process this request..');                                                     
               }
           });
-        });    
+        });        
 
-
-        
         // Save User
         $('#btnRemoveUser').click(function() {        
           var uId = $('#confirm-remove span').text(); 
@@ -510,7 +483,7 @@
           console.log(jsonData);
           console.log(setAgencyId);
 
-          $.ajax({    
+          $.({    
               type: "POST",                
               url: domain+"index.php/user-remove",
               data: {data: jsonData},              
@@ -548,16 +521,8 @@
             var data = $(this).attr('id');                     
 
             $(".modal-body #userId").val(data);
-            //document.getElementById("btnCetak").disabled = true;
-            //document.getElementById("btnCetak").style.display = "none";
-            document.getElementById("qr_image_preview").style.display ="none";
-            document.getElementById("btnCetak").style.display ="none";
-            document.getElementById("btnGenerateQrcode").style.display ="initial";
-
             $('#addUserModal').modal('show');
-        });
-
-            
+        });       
 
         // Preview User Record
         $('#tblListUser tbody').on( 'click', 'a.user_remove', function (e) {
@@ -568,8 +533,6 @@
             $("#confirm-remove span").text(data);  
             $('#removeUserModal').modal('show');          
         });  
-
-        
 
         $('#addUserModal').on('show.bs.modal', function (event) {
           var uId = $('#userId').val();          
@@ -590,7 +553,7 @@
           // $("#file-photo").replaceWith($("#file-photo").clone());
 
           // get details User record from server       
-          $.ajax({
+          $.({
               type: "GET",
               datatype: "jsonp",                            
               url: domain+"index.php/user-details/"+uId,
@@ -636,7 +599,7 @@
         // });
 
         function getUsers(agencyId) {
-            $.ajax({
+            $.({
               type: "GET",
               datatype: "jsonp",                            
               url: domain+"index.php/api/user-list-by-agency/"+agencyId,   
@@ -666,7 +629,7 @@
 
         function setImage(type, parentid) {
           // References:
-          // https://www.formget.com/ajax-image-upload-php/
+          // https://www.formget.com/-image-upload-php/
           // http://stackoverflow.com/questions/17710147/image-convert-to-base64
 
           var noimage = domain+'/templates/images/noimage.png';          
@@ -711,12 +674,12 @@
                 $('#preview-'+ type +'').attr('height', '100px');              
                 $('#preview-'+ type +'').attr('src', e.target.result);
 
-                // Ajax Post here                                
+                //  Post here                                
                 var jsonData = '{"type":"'+ type +'","parentid":"'+ parentid +'","photo":"'+ e.target.result +'"}';
 
                 console.log(jsonData);
 
-                $.ajax({    
+                $.({    
                     type: "POST",                
                     url: domain+"index.php/image-set",                                               
                     data: {data: jsonData},              
@@ -739,7 +702,7 @@
         };
 
         function getImage(type, parentid) {        
-          $.ajax({
+          $.({
               type: "GET",
               datatype: "jsonp",                            
               url: domain+"index.php/api/image-get/"+type+"/"+parentid,   
@@ -764,7 +727,7 @@
         }; 
 
         function getConfig(agencyId) {
-          $.ajax({
+          $.({
               type: "GET",
               datatype: "jsonp",                            
               url: domain+"index.php/api/config-agency/"+agencyId,   

@@ -14,7 +14,7 @@ class Api extends CI_Controller {
 
 	public function index()
 	{ 		
-
+              
 	}
 
 	public function department_by_ministry($id = NULL)
@@ -31,15 +31,6 @@ class Api extends CI_Controller {
 
 	    header('Content-Type: application/json');
 	    echo json_encode($branch_data);		    
-	}
-
-	public function petugas_by_selection($id = NULL)
-	{           
-		
-		$user_data = $this->user_model->list_by_agency_sortname($id);		
-
-	    header('Content-Type: application/json');
-	    echo json_encode($user_data);		    
 	}
 	
 

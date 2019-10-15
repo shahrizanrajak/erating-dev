@@ -94,9 +94,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-// $autoload['helper'] = array();
-$autoload['helper'] = array('url');
-
+$autoload['helper'] = array();
 // $autoload['helper'] = array('form', 'url', 'file');
 // http://tutsnare.com/secure-codeigniter-application-using-csrf-token/
 

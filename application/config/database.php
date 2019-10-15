@@ -88,14 +88,14 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'localhost:8889',
 	'username' => 'root',
-	'password' => 'password',
+	'password' => 'root',
 	'database' => 'erating',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	'db_debug' => (ENVIRONMENT !== 'development'),
 	'cache_on' => TRUE,
 	'cachedir' => APPPATH.'cache',
 	'char_set' => 'utf8',

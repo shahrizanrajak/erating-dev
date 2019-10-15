@@ -24,8 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = '';
-// $config['base_url'] = '/';
-$config['base_url'] = '/erating_onboard';
+$config['base_url'] = 'http://localhost:8888/erating/';
 
 /*
 |--------------------------------------------------------------------------
@@ -372,8 +371,7 @@ $config['encryption_key'] = '';
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 28800;		// default 7200 = 7200seconds or 2 hours minutes (60sec x 60 x 2) seconds
-$config['sess_save_path'] = NULL;
-$config['sess_save_path'] = APPPATH . 'ci_sessions/';
+$config['sess_save_path'] = APPPATH . '/session';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 28800;	// default 300 = 300seconds or 5 minutes (60sec x 5)
 $config['sess_regenerate_destroy'] = FALSE;
